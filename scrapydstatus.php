@@ -10,7 +10,8 @@ curl_close($ch);
 
 unset($data['status']);
 
-
+$logurl = 'http://spiderman.loc:6800/logs/initialbot/';
+$jsonurl = 'http://spiderman.loc:6800/items/initialbot/';
 
 include 'templates/header.tpl.php';
 include 'templates/scrapydstatus.tpl.php';

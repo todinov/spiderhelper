@@ -12,8 +12,11 @@
 				<ol class="hidden jl">
 					<li class="first"><?php echo $job['spider'];?></li>
 					<li><?php echo $job['id'];?></li>
-					<li><?php echo $job['start_time'];?></li>
-					<li><?php echo $job['end_time'];?></li>
+					<li><?php echo date('d.m.Y H:i:s',strtotime($job['start_time']));?></li>
+					<li><?php echo date('d.m.Y H:i:s',strtotime($job['end_time']));?></li>
+					<li><a href="<?php echo $logurl.$job['spider'].'/'.$job['id'].'.log';?>" target="_blank">log</a></li>
+					<li><a href="<?php echo $jsonurl.$job['spider'].'/'.$job['id'].'.jl';?>" target="_blank">json</a></li>
+					<li><a href="#">stop</a></li>
 				</ol>
 			<?php endforeach;?>
 			</li>
