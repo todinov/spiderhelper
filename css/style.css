@@ -69,6 +69,11 @@ div.content{
 	padding: 0;
 	clear:both;
 }
+table.jl {
+	border-left: 1px solid #DDD;
+	border-spacing: 10px;
+	border-collapse: separate;
+}
 .content .cat{
 	margin: 0;
 	padding: 0;

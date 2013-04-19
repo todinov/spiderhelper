@@ -18,4 +18,13 @@ class Scrapydstatus extends Controller {
 		$this->assign('jsonurl', 'http://spiderman.loc:6800/items/initialbot/');
 		$this->view('scrapydstatus.tpl');
 	}
+
+	public function stopcrawl()
+	{
+		if (!empty($_POST['jobid'])) {
+			$jobid = htmlspecialchars(trim($jobid));
+		}
+		$cmd = 'curl http://localhost:6800/cancel.json -d project=initialbot -d job='.$jobid;
+		echo shell_exec($cmd);
+	}
 }
