@@ -12,7 +12,7 @@
 					<li class="first"><?php echo $file['date'];?></li>
 					
 					<li class="path">
-						<a href="open.php?file=<?php echo $file['path'];?>">
+						<a href="index.php?open/json/<?php echo $file['name'];?>">
 							<?php echo $file['name'];?>
 						</a>
 					</li>

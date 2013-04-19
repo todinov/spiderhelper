@@ -28,7 +28,7 @@ class Spiders extends Controller {
 				'name' => $info['basename'], 
 				'path' => $file,
 				'size' => round(filesize($file) / 1024, 1) .'KB',
-				'class' => $baseclass
+				'class' => $baseclass,
 			);
 		}
 		if (isset($_GET['sort'])) {

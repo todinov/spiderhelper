@@ -12,7 +12,7 @@
 					<li class="first"><?php echo $file['date'];?></li>
 					
 					<li class="path" style="width:430px">
-						<a href="openxml.php?path=<?php echo $file['path'];?>">
+						<a href="index.php?open/xml/<?php echo $file['name'];?>">
 							<?php echo $file['name'];?>
 						</a>
 					</li>

@@ -76,7 +76,7 @@ $(document).ready(function(){
 <div id="nav">
 	<ul>
 		<li><a href="index.php?scraped">Scrapyd</a></li>
-		<li><a href="index.php?datajson">Test JSON</a></li>
+		<li><a href="index.php?datajson">Crawl</a></li>
 		<li><a href="index.php?dataxml">XML</a></li>
 		<li><a href="index.php?spiders">Spiders</a></li>
 		<li><a href="index.php?scrapydstatus">Status</a></li>
