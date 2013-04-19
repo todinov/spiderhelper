@@ -32,6 +32,7 @@ class Scraped extends Controller {
 			$files[$name][] = array( 
 				'date' => filemtime($file),
 				'name' => $info['basename'],
+				'url' => 'http://spiderman.loc:6800/items/initialbot/'.$name.'/'.$info['basename'],
 				'path' => $file,
 				'size' => round(filesize($file) / 1024, 1) .'KB',
 				'parsecmd' => $parsecmd,

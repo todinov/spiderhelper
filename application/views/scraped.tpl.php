@@ -13,7 +13,7 @@
 					<li class="first"><?php echo date('d.m.Y H:i:s',$file['date']);?></li>
 					
 					<li class="path">
-						<a href="open.php?file=<?php echo $file['path'];?>">
+						<a href="<?php echo $file['url'];?>">
 							<?php echo $file['name'];?>
 						</a>
 					</li>
