@@ -19,13 +19,13 @@ class Scraped extends Controller {
 				$files[$name] = array();
 			}
 
-			$parsecmd  = '/var/www/spiderman/www/protected/yiic app Parser';
-			$parsecmd .= ' --siteid='.isset($sites[$name]['id'])?$sites[$name]['id']:'';
+			$parsecmd  = './www/protected/yiic app Parser';
+			$parsecmd .= ' --siteid='.(isset($sites[$name]['id'])?$sites[$name]['id']:'');
 			$parsecmd .= ' --botname='.$name;
-			$parsecmd .= ' --parser='.isset($sites[$name]['parsername'])?$sites[$name]['parsername']:'';
+			$parsecmd .= ' --parser='.(isset($sites[$name]['parsername'])?$sites[$name]['parsername']:'');
 			$parsecmd .= ' --jobid='.$info['filename'];
 
-			$testparsecmd  = '/var/www/spiderman/www/protected/yiic app Testparser';
+			$testparsecmd  = './www/protected/yiic app Testparser';
 			$testparsecmd .= ' --infile='.$file;
 			$testparsecmd .= ' --outfile=./data/'.$name.'.xml';
 
