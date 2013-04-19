@@ -1,3 +1,4 @@
+<?php include 'header.tpl.php';?>
 <div id="main">
 	<div class="content">
 		<ul>
@@ -46,3 +47,4 @@
 		</ul>
 	</div>
 </div>
+<?php include 'footer.tpl.php';?>

@@ -1,3 +1,4 @@
+<?php include 'header.tpl.php';?>
 <div id="main">
 	<div class="content">
 		<ul>
@@ -9,7 +10,7 @@
 					<div class="siteid" style="text-align:right;"><?php echo count($value);?></div>
 				</div>
 				<?php foreach ($value as $job): ?>
-				<ol class="hidden jl">
+				<ol class="jl">
 					<li class="first"><?php echo $job['spider'];?></li>
 					<li><?php echo $job['id'];?></li>
 					<li><?php echo date('d.m.Y H:i:s',strtotime($job['start_time']));?></li>
@@ -24,3 +25,4 @@
 		</ul>
 	</div>
 </div>
+<?php include 'footer.tpl.php';?>

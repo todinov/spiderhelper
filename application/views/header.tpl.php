@@ -34,7 +34,7 @@ jQuery.fn.selectText = function(){
 
 $(document).ready(function(){
 	$('.name').click(function(){
-		$(this).siblings('.hidden').toggle();
+		$(this).siblings('.jl').toggle();
 	});
 
 	function copy(text) {
@@ -75,10 +75,10 @@ $(document).ready(function(){
 <div class="line"></div>
 <div id="nav">
 	<ul>
-		<li><a href="index.php">Scrapyd</a></li>
-		<li><a href="data_json.php">Test JSON</a></li>
-		<li><a href="data_xml.php">XML</a></li>
-		<li><a href="spiders.php">Spiders</a></li>
-		<li><a href="scrapydstatus.php">Status</a></li>
+		<li><a href="index.php?scraped">Scrapyd</a></li>
+		<li><a href="index.php?datajson">Test JSON</a></li>
+		<li><a href="index.php?dataxml">XML</a></li>
+		<li><a href="index.php?spiders">Spiders</a></li>
+		<li><a href="index.php?scrapydstatus">Status</a></li>
 	</ul>
 </div>

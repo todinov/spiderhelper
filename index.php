@@ -1,48 +1,88 @@
 <?php
+session_start();
 
-include 'db.php';
+define('DEVEL', true);
+define('BASEPATH', '/spiderhelper/');
 
-$sites = array();
-foreach ($db->query('SELECT * FROM site') as $site) {
-	$sites[$site['botname']] = $site;
+// default settings
+define('APPPATH', 'application/');
+define('SYSPATH', 'system/');
+define('ERRPATH', 'errors/');
+define('CACHEPATH', 'cache/');
+
+// display errors in development
+if (DEVEL)
+{
+	error_reporting(E_ALL);
+}
+else 
+{
+	error_reporting(0);
 }
 
-$dir = '/var/lib/scrapyd/items/initialbot/*/*';
+require APPPATH.'config/config.php';
+require SYSPATH.'model.php';
+require SYSPATH.'controller.php';
+include SYSPATH.'helpers.php';
 
-$files = array();
-foreach (glob($dir) as $file) {
-	$info = pathinfo($file);
-	$path = explode('/', $info['dirname']);
-	$name = $path[count($path)-1];
+// get the reques string passed to index.php
+$request = $_SERVER['QUERY_STRING'];
 
-	if (!isset($files[$name])) {
-		$files[$name] = array();
+// parse the page request and other parameters
+$parsed = explode('/' , $request);
+
+// the class is the first element
+$class = array_shift($parsed);
+
+if (empty($class))
+{
+	$class = $default_controller;
+}
+
+//the method is the second element
+if (!empty($parsed[0]))
+{
+	$method = array_shift($parsed);
+}
+else
+{
+	$method = 'index';
+}
+
+// modify class to fit naming convention
+$class = ucfirst($class);
+
+function __autoload($class_name) // autoload only controllers
+{
+	$target = APPPATH . 'controllers/'.strtolower($class_name).'.php';
+	if (file_exists($target))
+	{
+		require $target;
 	}
-
-	$parsecmd  = '/var/www/spiderman/www/protected/yiic app Parser';
-	$parsecmd .= ' --siteid='.$sites[$name]['id'];
-	$parsecmd .= ' --botname='.$name;
-	$parsecmd .= ' --parser='.$sites[$name]['parsername'];
-	$parsecmd .= ' --jobid='.$info['filename'];
-
-	$testparsecmd  = '/var/www/spiderman/www/protected/yiic app Testparser';
-	$testparsecmd .= ' --infile='.$file;
-	$testparsecmd .= ' --outfile=./data/'.$name.'.xml';
-
-	$files[$name][] = array( 
-		'date' => filemtime($file),
-		'name' => $info['basename'],
-		'path' => $file,
-		'size' => round(filesize($file) / 1024, 1) .'KB',
-		'parsecmd' => $parsecmd,
-		'testparsecmd' => $testparsecmd
-	);
 }
 
-foreach ($files as $key => $val) {
-	usort($files[$key], function($a, $b) { return ($a['date'] > $b['date']); });
-}
+// instantiate the appropriate class and display the page
+if (class_exists($class)) // calls autoload here
+{
+	$controller = new $class;
 
-include 'templates/header.tpl.php';
-include 'templates/index.tpl.php';
-include 'templates/footer.tpl.php';
+	if(method_exists($controller, $method))
+	{
+		if (!empty($parsed))
+		{
+			$controller->$method($parsed);
+		}
+		else
+		{
+			$controller->$method();
+		}
+	}
+	else
+	{
+		show404();
+	}
+}
+else
+{
+	show404();
+}
