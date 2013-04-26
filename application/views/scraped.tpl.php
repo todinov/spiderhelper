@@ -31,7 +31,7 @@
 					</li>
 
 					<li>
-						<a href="analyze.php?file=<?php echo $file['path'];?>">
+						<a href="index.php?analyze/json/<?php echo urlencode($file['path']);?>">
 							<img src="images/category.png" alt="analyze" title="analyze"/>
 						</a>
 					</li>
