@@ -33,6 +33,7 @@
 <script type="text/javascript">
 $('.stopcrawl').click(function () {
 	jobid = $(this).attr('data-jobid');
+	console.log(jobid);
 	$.ajax({
 		type: "POST",
 		url: "index.php?scrapydstatus/stopcrawl",

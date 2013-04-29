@@ -22,8 +22,9 @@ class Scrapydstatus extends Controller {
 	public function stopcrawl()
 	{
 		if (!empty($_POST['jobid'])) {
-			$jobid = htmlspecialchars(trim($jobid));
+			$jobid = htmlspecialchars(trim($_POST['jobid']));
 		}
+		echo $jobid;
 		$cmd = 'curl http://localhost:6800/cancel.json -d project=initialbot -d job='.$jobid;
 		echo shell_exec($cmd);
 	}

@@ -36,6 +36,8 @@ class Analyze extends Controller {
 				);
 			}
 
+			$this->assign('allprod', $allprod);
+			$this->assign('allpage', $allpage);
 			$this->assign('results', $results);
 			$this->view('analyze.tpl');
 		}
