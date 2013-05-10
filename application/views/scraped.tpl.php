@@ -19,6 +19,12 @@
 					</li>
 
 					<li>
+						<a href="<?php echo $file['log'];?>">
+							<img src="images/log.png"/>
+						</a>
+					</li>
+
+					<li>
 						<img src="images/json.png" class="btn" title="<?php echo $file['path'];?>"/>
 					</li>
 

@@ -82,7 +82,7 @@ table.jl {
 .content ol li{
 	float:left;
 	margin:0px;
-	padding:10px;
+	padding:10px 8px;
 	list-style:none;
 }
 .hidden{
