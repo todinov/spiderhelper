@@ -33,6 +33,10 @@
 					</li>
 
 					<li>
+						<img src="images/parse.png" class="btn" title="<?php echo $file['writecmd'];?>"/>
+					</li>
+
+					<li>
 						<img src="images/testparser.png" class="btn" title="<?php echo $file['testparsecmd'];?>"/>
 					</li>
 

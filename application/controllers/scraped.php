@@ -25,6 +25,12 @@ class Scraped extends Controller {
 			$parsecmd .= ' --parser='.(isset($sites[$name]['parsername'])?$sites[$name]['parsername']:'');
 			$parsecmd .= ' --jobid='.$info['filename'];
 
+			$writecmd  = './www/protected/yiic app Writer';
+			$writecmd .= ' --siteid='.(isset($sites[$name]['id'])?$sites[$name]['id']:'');
+			$writecmd .= ' --botname='.$name;
+			$writecmd .= ' --writer=asos_writer';
+			$writecmd .= ' --jobid='.$info['filename'];
+
 			$testparsecmd  = './www/protected/yiic app Testparser';
 			$testparsecmd .= ' --infile='.$file;
 			$testparsecmd .= ' --outfile=./data/'.$name.'.xml';
@@ -37,6 +43,7 @@ class Scraped extends Controller {
 				'path' => $file,
 				'size' => round(filesize($file) / 1024, 1) .'KB',
 				'parsecmd' => $parsecmd,
+				'writecmd' => $writecmd,
 				'testparsecmd' => $testparsecmd
 			);
 		}
