@@ -29,6 +29,8 @@ class Scraped extends Controller {
 			$writecmd .= ' --siteid='.(isset($sites[$name]['id'])?$sites[$name]['id']:'');
 			$writecmd .= ' --botname='.$name;
 			$writecmd .= ' --writer=asos_writer';
+			$writecmd .= ' --writerid=1';
+			$writecmd .= ' --startdate=today';
 			$writecmd .= ' --jobid='.$info['filename'];
 
 			$testparsecmd  = './www/protected/yiic app Testparser';
