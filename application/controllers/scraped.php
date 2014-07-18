@@ -30,7 +30,7 @@ class Scraped extends Controller {
 			$writecmd .= ' --botname='.$name;
 			$writecmd .= ' --writer=asos_writer';
 			$writecmd .= ' --writerid=1';
-			$writecmd .= ' --startdate=today';
+			$writecmd .= ' --startdate=' . date('Ymd_His', strtotime('now'));
 			$writecmd .= ' --jobid='.$info['filename'];
 
 			$testparsecmd  = './www/protected/yiic app Testparser';
